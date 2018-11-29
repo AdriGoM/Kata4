@@ -9,9 +9,28 @@ import view.MailListReader;
 
 public class Kata4 {
 
+    private List<Mail> list;
+    private Histogram<String> histogram;
+
     public static void main(String[] args) {
-        List<Mail> list = MailListReader.getInstance().read("/Users/adriangodoymartinez/IdeaProjects/Kata4/src/email.txt");
-        Histogram<String> histogram = MailHistogramBuilder.getInstance().build(list);
+        (new Kata4()).control();
+    }
+
+    private void control() {
+        this.input();
+        this.proccess();
+        this.output();
+    }
+
+    private void input() {
+        list = MailListReader.getInstance().read("/Users/adriangodoymartinez/IdeaProjects/Kata4/src/email.txt");
+    }
+
+    private void proccess() {
+        histogram = MailHistogramBuilder.getInstance().build(list);
+    }
+
+    private void output() {
         HistogramDisplay display = new HistogramDisplay(histogram);
         display.execute();
     }
